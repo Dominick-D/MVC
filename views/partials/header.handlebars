@@ -1,8 +1,30 @@
 <header>
-  <h1>Tech Blog</h1>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/dashboard">Dashboard</a>
-    <a href="/login">Login</a>
-  </nav>
-</header>
+        <div class="header-container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a class="navbar-item" id="header-title" href="/">
+                        <span class="title is-4">Tech Blog</span>
+                    </a>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                        data-target="navMenu">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+
+                    </a>
+                </div>
+                <div id="navMenu" class="navbar-menu">
+                    <div class="navbar-start">
+                        <!-- The navbar-start section remains empty -->
+                    </div>
+                    <div class="navbar-end">
+                        <a class="navbar-item" id="navbar-links" href="/">Home</a>
+                        <a class="navbar-item" id="navbar-links" href="/dashboard">Dashboard</a>
+                        <a class="navbar-item" id="navbar-links" href="contact.html">Login</a>
+                    </div>
+                </div>
+            </nav>
+            <img class="header-background-image" src="./assets/images/plane.png" alt="Background Image">
+        </div>
+    </header>
+
