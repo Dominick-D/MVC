@@ -6,7 +6,7 @@ const loginFormHandler = async (event) => {
 
   if (username && password) {
     const response = await fetch('/api/users/login', {
-      method: 'post',
+      method: 'POST',
       body: JSON.stringify({
         username,
         password
@@ -25,12 +25,12 @@ const loginFormHandler = async (event) => {
 const loginForm = document.querySelector('.login-form');
 if (loginForm) {
   loginForm.addEventListener('submit', loginFormHandler);
-  res.redirect('/dashboard');
+  // res.redirect('/dashboard');
 }
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
-
+  console.log('Form submitted');
   const username = document.querySelector('#username-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
