@@ -42,13 +42,13 @@
 
 .header-background-image {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0%;
+    /* left: 0; */
     height: 20vh;
     width: 100%;
     z-index: 19;
     object-fit: cover;
-    object-position: center top;
+    object-position: 100% 80%;
 }
 
 .title,
