@@ -1,7 +1,32 @@
 {{> header}}
 
-<main>
-  
+<main class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      {{#each posts}}
+        <div class="column is-one-third">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">{{this.title}}</p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                {{this.content}}
+                <br>
+                <small>Posted by {{this.User.username}} on {{format_date this.date_created}}</small>
+              </div>
+            </div>
+            {{#if logged_in}}
+              <footer class="card-footer">
+                <a href="/post/{{this.id}}" class="card-footer-item">View Post</a>
+                <a href="/post/{{this.id}}/comment" class="card-footer-item">Comment</a>
+              </footer>
+            {{/if}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
 </main>
 
 {{> footer}}
