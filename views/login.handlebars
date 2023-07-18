@@ -1,13 +1,36 @@
 {{> header}}
 
-<main>
-  <form class="login-form">
-    <label for="username-login">Username:</label>
-    <input type="text" id="username-login">
-    <label for="password-login">Password:</label>
-    <input type="password" id="password-login">
-    <button type="submit">Login</button>
-  </form>
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <form class="box" action="/api/users/login" method="POST">
+          <h1 class="title is-4 has-text-centered">Login</h1>
+          <div class="field">
+            <label class="label" for="username-login">Username:</label>
+            <div class="control">
+              <input class="input" type="text" id="username-login" placeholder="Enter your username">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="password-login">Password:</label>
+            <div class="control">
+              <input class="input" type="password" id="password-login" placeholder="Enter your password">
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button class="button is-primary is-fullwidth" type="submit">Login</button>
+            </div>
+          </div>
+        </form>
+        <div class="box has-text-centered">
+          <p>Don't have an account?</p>
+          <a href="/signup" class="button is-link is-fullwidth">Sign Up Here!</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 
 {{> footer}}

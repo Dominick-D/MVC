@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
+const path = require('path');
 
 router.get('/', async (req, res) => {
   try {
@@ -74,5 +75,10 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+router.get('/signup', function(req, res) {
+  res.render(path.join(__dirname, '../views/signup.handlebars'));
+});
+
 
 module.exports = router;
