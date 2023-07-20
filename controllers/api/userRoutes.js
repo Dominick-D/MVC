@@ -58,17 +58,19 @@ router.post('/logout',  withAuth, async (req, res) => {
 
 router.put('/update-password', withAuth, async (req, res) => {
   try {
-    const userData = await User.update(
-      { password: req.body.password },
-      { where: { id: req.session.user_id } }
-    );
+    const userData = await User.findByPk(req.session.user_id);
 
-    if (!userData) {
-      res.status(404).json({ message: 'No user found with this id!' });
+    if (!userData.validPassword(req.body.currentPassword)) {
+      res.status(400).json({ message: 'Current password is incorrect' });
       return;
     }
 
-    res.status(200).json(userData);
+    await User.update(
+      { password: req.body.newPassword },
+      { where: { id: req.session.user_id } }
+    );
+
+    res.status(200).json({ message: 'Password updated successfully' });
   } catch (err) {
     res.status(500).json(err);
   }

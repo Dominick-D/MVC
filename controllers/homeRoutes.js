@@ -60,8 +60,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
+    const userData = await User.findByPk(req.session.user_id);
+    const username = userData.get({ plain: true }).username;
 
-    res.render('dashboard', { posts, logged_in: true });
+    res.render('dashboard', { posts, logged_in: true, username });
   } catch (err) {
     res.status(500).json(err);
   }

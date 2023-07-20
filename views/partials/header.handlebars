@@ -2,8 +2,8 @@
   <div class="header-container">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" id="header-title" href="/">
-          <span class="title is-4">Tech Blog</span>
+        <a class="navbar-item" href="/">
+          <span class="title is-4 NBTitle">Tech Blog</span>
         </a>
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
           <span aria-hidden="true"></span>
@@ -21,7 +21,7 @@
           <a class="navbar-item" id="navbar-links" href="/dashboard">Dashboard</a>
           {{#if logged_in}}
           <form>
-          <a class="navbar-item logout-button" id="navbar-links" href="/">Logout</a>
+            <a class="navbar-item logout-button" id="navbar-links" href="/">Logout</a>
           </form>
           {{else}}
           <a class="navbar-item" id="navbar-links" href="/login">Login</a>
@@ -30,5 +30,8 @@
       </div>
     </nav>
     <img class="header-background-image" src="./assets/images/plane.png" alt="Background Image">
+  </div>
+  <div id="banner" class="notification is-primary has-text-centered">
+    <p id="banner-text"></p>
   </div>
 </header>

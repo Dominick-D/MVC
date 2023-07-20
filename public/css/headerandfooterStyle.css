@@ -1,3 +1,10 @@
+:root{
+    --mainTextColor: #d7edff;
+    --scdTextColor: #002e54;
+    --Transparany: #9a9a9a00;
+}
+
+
 .navbar {
     position: fixed;
     top: 0;
@@ -11,14 +18,14 @@
 } */
 .navbar-item {
     font-size: 1.25rem;
-    color: rgb(224, 224, 224);
+    color: var(--mainTextColor);
     display: flex;
     justify-content: end;
 }
 
 #navbar-links:hover {
-    background-color: rgba(154, 154, 154, 0) !important;
-    color: white !important;
+    background-color: var(--Transparany) !important;
+    color: var(--scdTextColor) !important;
 
 }
 
@@ -28,7 +35,7 @@
 
 .navbar-burger span {
     height: 2px;
-    color: #ffff;
+    color: var(--mainTextColor);
 }
 
 .navbar-burger {
@@ -43,17 +50,15 @@
 .header-background-image {
     position: fixed;
     top: 0%;
-    /* left: 0; */
     height: 20vh;
     width: 100%;
     z-index: 19;
     object-fit: cover;
-    object-position: 100% 80%;
+    object-position: 100% 75%;
 }
 
-.title,
-.subtitle {
-    color: white;
+.NBTitle {
+    color: var(--mainTextColor);
 }
 
 #title-img {

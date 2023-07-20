@@ -7,6 +7,12 @@
         <div class="box">
           <h1 class="title is-4 has-text-centered">Welcome to the Tech Blog, {{username}}!</h1>
           <div class="field">
+            <label class="label" for="current-password">Current Password:</label>
+            <div class="control">
+              <input class="input" type="password" id="current-password" placeholder="Enter your current password">
+            </div>
+          </div>
+          <div class="field">
             <label class="label" for="password-change">Change Password:</label>
             <div class="control">
               <input class="input" type="password" id="password-change" placeholder="Enter your new password">
@@ -18,20 +24,21 @@
             </div>
           </div>
         </div>
+        <div id="passwordMessage"></div>
         <div class="box">
           <h2 class="title is-4 has-text-centered">Your Posts</h2>
           {{#each posts}}
-            <article class="media">
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>{{this.title}}</strong>
-                    <br>
-                    {{this.content}}
-                  </p>
-                </div>
+          <article class="media">
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>{{this.title}}</strong>
+                  <br>
+                  {{this.content}}
+                </p>
               </div>
-            </article>
+            </div>
+          </article>
           {{/each}}
           <div class="field">
             <div class="control">

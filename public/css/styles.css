@@ -1,3 +1,16 @@
 main {
     min-height: 100vh;
+    background-image: url(../assets/images/Tech_BG2_TILED.png);
+
+    background-repeat: repeat;
+    background-size: 15%;
 }
+
+#banner {
+    height: 7vh;
+    display: flex;
+    align-items: center; /* This centers the text vertically */
+    justify-content: center; /* This centers the text horizontally */
+    overflow: hidden; /* This ensures the text doesn't overflow the banner */
+  }
+  
