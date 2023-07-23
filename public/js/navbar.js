@@ -19,3 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+fetch('/latest-user')
+  .then(response => response.json())
+  .then(user => {
+    // Update the banner message with the latest user's username
+    const bannerMessage = `Today is ${new Date().toLocaleDateString()}, Welcome our latest user, ${user.username}! Post your tech related questions, news, or anything about anything that uses electricity! Hope you enjoy your stay!`;
+    document.getElementById('banner-text').textContent = bannerMessage;
+  })
+  .catch(error => console.error('Error:', error));
+
+
+

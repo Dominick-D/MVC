@@ -6,11 +6,5 @@ main {
     background-size: 15%;
 }
 
-#banner {
-    height: 7vh;
-    display: flex;
-    align-items: center; /* This centers the text vertically */
-    justify-content: center; /* This centers the text horizontally */
-    overflow: hidden; /* This ensures the text doesn't overflow the banner */
-  }
+
   

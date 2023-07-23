@@ -18,6 +18,29 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/latest', async (req, res) => {
+  try {
+    const userData = await User.findOne({
+      attributes: { exclude: ['password'] },
+      order: [
+        ['createdAt', 'DESC']
+      ]
+    });
+    
+
+    if (!userData) {
+      res.status(404).json({ message: 'No user found' });
+      return;
+    }
+
+    res.json(userData);
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { username: req.body.username } });
@@ -75,6 +98,7 @@ router.put('/update-password', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 
 module.exports = router;

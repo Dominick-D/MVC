@@ -82,6 +82,19 @@ router.get('/signup', function(req, res) {
   res.render(path.join(__dirname, '../views/signup.handlebars'));
 });
 
+router.get('/latest-user', async (req, res) => {
+  try {
+    const latestUser = await User.findOne({
+      order: [['createdAt', 'DESC']],
+    });
+
+    res.json(latestUser);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 // router.get('/', async (req, res) => {
 //   try {
 //     // Get all posts from the database
