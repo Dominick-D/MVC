@@ -13,7 +13,7 @@
                         <div class="content">
                             {{this.content}}
                             <br>
-                            <small>Posted by {{this.User.username}} on {{#if this.date_created}}{{format_date this.date_created}}{{/if}}</small>
+                            <small>Posted by {{this.User.username}} on {{#if this.createdAt}}{{format_date this.createdAt}}{{/if}}</small>
                         </div>
                     </div>
                     {{#if logged_in}}

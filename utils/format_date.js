@@ -1,7 +1,8 @@
+// utils/format_date.js
+const moment = require('moment');
+
 const format_date = (date) => {
-    // Format date as MM/DD/YYYY
-    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-  };
-  
-  module.exports = format_date;
-  
+  return moment(date).format('MMMM Do YYYY, h:mm a');
+};
+
+module.exports = format_date;
