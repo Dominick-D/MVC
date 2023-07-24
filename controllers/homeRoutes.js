@@ -6,14 +6,19 @@ const path = require('path');
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
-      include: [{ model: User }],
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
 
     const logged_in = req.session.logged_in || false;
 
-    res.render('home', { posts, logged_in });
+    res.render('home', { postData, posts, logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
