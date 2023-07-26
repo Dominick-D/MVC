@@ -9,8 +9,8 @@ router.post('/', withAuth, async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
-
-    res.status(200).json(newPost);
+    res.redirect(`/post/${req.body.post_id}`);
+    // res.status(200).json(newPost);
   } catch (err) {
     res.status(400).json(err);
   }

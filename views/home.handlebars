@@ -16,16 +16,20 @@
                             <small>Posted by {{this.user.username}} on {{#if this.createdAt}}{{format_date this.createdAt}}{{/if}}</small>
                         </div>
                     </div>
-                    {{#if logged_in}}
+                    {{#if ../logged_in}}
                     <footer class="card-footer">
-                        <a href="/post/{{this.id}}" class="card-footer-item">View Post</a>
-                        <a href="/post/{{this.id}}/comment" class="card-footer-item">Comment</a>
+                        <a href="/post/{{this.id}}" class="card-footer-item">View Post & Comment</a>
+                        <a href="/post/{{this.id}}/like" class="card-footer-item">like</a>
                     </footer>
-
+                    {{else}}
+                    <footer class="card-footer">
+                       <a href="/post/{{this.id}}" class="card-footer-item">View Post</a>
+                    </footer>
                     {{/if}}
                 </div>
             </div>
             {{/each}}
+            
         </div>
     </div>
 </main>

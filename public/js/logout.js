@@ -15,5 +15,7 @@ const logout = async () => {
     alert('Failed to log out');
   }
 };
-
-document.querySelector('.logout-button').addEventListener('click', logout);
+const loginButton = document.querySelector('.logout-button');
+if (loginButton) {
+loginButton.addEventListener('click', logout);
+}

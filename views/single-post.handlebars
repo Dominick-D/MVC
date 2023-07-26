@@ -1,34 +1,43 @@
 {{> header}}
 
 <main class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-half">
-        <div class="box">
-          <h1 class="title is-4 has-text-centered">{{post.title}}</h1>
-          <p>{{post.content}}</p>
-          <p>Posted by {{post.user.username}} on {{post.createdAt}}</p>
-        </div>
-        {{#if logged_in}}
-        <div class="box">
-          <form class="comment-form">
-            <div class="field">
-              <label class="label" for="comment">Leave a comment:</label>
-              <div class="control">
-                <textarea class="textarea" id="comment" placeholder="Enter your comment"></textarea>
-              </div>
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <div class="box">
+                    <h1 class="title is-4 has-text-centered">{{post.title}}</h1>
+                    <p>{{post.content}}</p>
+                    <p>Posted by {{post.user.username}} on {{#if post.createdAt}}{{format_date post.createdAt}}{{/if}}
+                    </p>
+                </div>
+                {{#each post.comments}}
+                <div class="box">
+                    <p>{{this.comment_text}}</p>
+                    <p>Commented by {{this.user.username}} on {{#if this.createdAt}}{{format_date this.createdAt}}{{/if}}</p>
+                </div>
+                {{/each}}
+                {{#if logged_in}}
+                <div class="box">
+                    <form class="comment-form" action="/api/comments" method="POST">
+                        <input type="hidden" name="post_id" value="{{post.id}}">
+                        <div class="field">
+                            <label class="label" for="comment">Leave a comment:</label>
+                            <div class="control">
+                                <textarea class="textarea" id="comment" name="comment_text"
+                                    placeholder="Enter your comment"></textarea>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary is-fullwidth" type="submit">Post Comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {{/if}}
             </div>
-            <div class="field">
-              <div class="control">
-                <button class="button is-primary is-fullwidth" type="submit">Post Comment</button>
-              </div>
-            </div>
-          </form>
         </div>
-        {{/if}}
-      </div>
     </div>
-  </div>
 </main>
 
 {{> footer}}

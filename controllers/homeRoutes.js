@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 const path = require('path');
@@ -17,8 +18,11 @@ router.get('/', async (req, res) => {
     const posts = postData.map((post) => post.get({ plain: true }));
 
     const logged_in = await req.session.logged_in;
-
-    res.render('home', { postData, posts, logged_in});
+    
+    res.render('home', { 
+      posts, 
+      logged_in,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -34,16 +38,20 @@ router.get('/post/:id', async (req, res) => {
         },
         {
           model: Comment,
-          include: [User],
+          include: [
+            {
+              model: User,
+              attributes: ['username'],
+            },
+          ],
         },
       ],
     });
-
     const post = postData.get({ plain: true });
     const logged_in = await req.session.logged_in;
 
-    res.render('post', {
-      ...post,
+    res.render('single-post', {
+      post,
       logged_in,
     });
   } catch (err) {
@@ -78,7 +86,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/signup', function(req, res) {
+router.get('/signup', function (req, res) {
   res.render(path.join(__dirname, '../views/signup.handlebars'));
 });
 

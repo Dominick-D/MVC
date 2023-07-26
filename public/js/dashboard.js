@@ -13,7 +13,10 @@ const passwordUpdateFormHandler = async (event) => {
 
     if (response.ok) {
       // Change the text of the message div
-      document.querySelector('#passwordMessage').textContent = 'Password updated successfully';
+      const passwordMess = document.querySelector('#passwordMessage');
+      if (passwordMess){
+      passwordMess.textContent = 'Password updated successfully';
+      }
     } else {
       alert('Failed to update password');
     }
