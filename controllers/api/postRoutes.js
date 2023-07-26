@@ -9,8 +9,9 @@ router.post('/', withAuth, async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
-    res.redirect(`/post/${req.body.post_id}`);
-    // res.status(200).json(newPost);
+  
+    // res.redirect(`/post/${newPost.id}`);
+    res.status(200).json(newPost);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -44,6 +45,38 @@ router.delete('/:id', withAuth, async (req, res) => {
         id: req.params.id,
       },
     });
+
+    if (!postData) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
+    }
+
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Like a post
+router.put('/like/:id', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.increment('likes', { where: { id: req.params.id } });
+
+    if (!postData) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
+    }
+
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Dislike a post
+router.put('/dislike/:id', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.decrement('likes', { where: { id: req.params.id } });
 
     if (!postData) {
       res.status(404).json({ message: 'No post found with this id!' });

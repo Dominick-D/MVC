@@ -12,13 +12,27 @@ const passwordUpdateFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      // Change the text of the message div
-      const passwordMess = document.querySelector('#passwordMessage');
-      if (passwordMess){
-      passwordMess.textContent = 'Password updated successfully';
+      const passwordUpdateForm = document.querySelector('.password-update-form');
+      if (passwordUpdateForm) {
+        passwordUpdateForm.addEventListener('submit', passwordUpdateFormHandler);
       }
     } else {
       alert('Failed to update password');
     }
   }
 };
+
+document.querySelectorAll('.delete-post').forEach(button => {
+  button.addEventListener('click', async (event) => {
+    const id = event.target.getAttribute('data-id');
+    const response = await fetch(`/api/posts/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert('Failed to delete post');
+    }
+  });
+});

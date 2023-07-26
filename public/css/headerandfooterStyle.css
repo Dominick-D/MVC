@@ -70,14 +70,16 @@
 .banner {
     height: 7vh;
     overflow: hidden;
-    background-color: #f0f0f0;
+    background: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
     position: relative;
+    color: white; 
 }
+
 
 #banner-text {
     position: absolute;
     white-space: nowrap;
-    animation: scroll 10s linear infinite;
+    animation: scroll 20s linear infinite;
 }
 
 @keyframes scroll {

@@ -5,6 +5,7 @@
     <div class="columns is-centered">
       <div class="column is-half">
         <div class="box">
+          <form class="password-update-form">
           <h1 class="title is-4 has-text-centered">Welcome to the Tech Blog, {{username}}!</h1>
           <div class="field">
             <label class="label" for="current-password">Current Password:</label>
@@ -23,6 +24,7 @@
               <button class="button is-primary is-fullwidth" type="submit">Change Password</button>
             </div>
           </div>
+          </form>
         </div>
         <div id="passwordMessage"></div>
         <div class="box">
@@ -37,6 +39,10 @@
                   {{this.content}}
                 </p>
               </div>
+            </div>
+            <div class="media-right">
+              <button class="delete-post button is-danger" data-id="{{this.id}}"><i
+                  class="fa-solid fa-trash"></i></button>
             </div>
           </article>
           {{/each}}

@@ -1,8 +1,8 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
   
-    const title = document.querySelector('#post-title').value.trim();
-    const content = document.querySelector('#post-content').value.trim();
+    const title = document.querySelector('#newPostTitle').value.trim();
+    const content = document.querySelector('#newPostContent').value.trim();
   
     if (title && content) {
       const response = await fetch(`/api/posts`, {
@@ -14,7 +14,8 @@ const newFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/dashboard');
+        const newPost = await response.json();
+        document.location.replace(`/post/${newPost.id}`);
       } else {
         alert('Failed to create post');
       }

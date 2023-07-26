@@ -5,10 +5,27 @@
         <div class="columns is-centered">
             <div class="column is-half">
                 <div class="box">
-                    <h1 class="title is-4 has-text-centered">{{post.title}}</h1>
-                    <p>{{post.content}}</p>
-                    <p>Posted by {{post.user.username}} on {{#if post.createdAt}}{{format_date post.createdAt}}{{/if}}
-                    </p>
+                    <article class="media">
+                        <div class="media-content">
+                            <div class="content">
+                                <h1 class="title is-4">{{post.title}}</h1>
+                                <p>{{post.content}}</p>
+                                <p>Posted by {{post.user.username}} on {{#if post.createdAt}}{{format_date post.createdAt}}{{/if}}</p>
+                            </div>
+                            {{#if logged_in}}
+                            <nav class="level">
+                                <div class="level-left">
+                                    <button class="level-item like-button" data-id="{{post.id}}">
+                                        <span class="icon is-small"><i class="fa-solid fa-thumbs-up" style="color: #003ca3;"></i></span>
+                                    </button>
+                                    <button class="level-item dislike-button" data-id="{{post.id}}">
+                                        <span class="icon is-small"><i class="fa-solid fa-thumbs-down" style="color: #003ca3;"></i></span>
+                                    </button>
+                                </div>
+                            </nav>
+                            {{/if}}
+                        </div>
+                    </article>
                 </div>
                 {{#each post.comments}}
                 <div class="box">

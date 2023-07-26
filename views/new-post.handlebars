@@ -5,17 +5,18 @@
     <div class="columns is-centered">
       <div class="column is-half">
         <div class="box">
-          <form class="new-post-form">
+          <form class="new-post-form" action="/api/posts" method="POST">
             <div class="field">
-              <label class="label" for="title">Title:</label>
+              <label class="label" for="newPostTitle">Title:</label>
               <div class="control">
-                <input class="input" type="text" id="title" placeholder="Enter the title of your post">
+                <input class="input" type="text" id="newPostTitle" placeholder="Enter the title of your post">
               </div>
             </div>
             <div class="field">
-              <label class="label" for="content">Content:</label>
+              <label class="label" for="newPostContent">Content:</label>
               <div class="control">
-                <textarea class="textarea" id="content" placeholder="Enter the content of your post"></textarea>
+                <textarea class="textarea" id="newPostContent" 
+                  placeholder="Enter the content of your post"></textarea>
               </div>
             </div>
             <div class="field">
