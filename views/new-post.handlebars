@@ -1,0 +1,33 @@
+{{> header}}
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="box">
+          <form class="new-post-form">
+            <div class="field">
+              <label class="label" for="title">Title:</label>
+              <div class="control">
+                <input class="input" type="text" id="title" placeholder="Enter the title of your post">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="content">Content:</label>
+              <div class="control">
+                <textarea class="textarea" id="content" placeholder="Enter the content of your post"></textarea>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button class="button is-primary is-fullwidth" type="submit">Create Post</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{{> footer}}
