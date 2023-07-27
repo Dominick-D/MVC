@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../../models');
+const { Post, UserPostInteraction ,User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Create a new post
@@ -60,14 +60,37 @@ router.delete('/:id', withAuth, async (req, res) => {
 // Like a post
 router.put('/like/:id', withAuth, async (req, res) => {
   try {
-    const postData = await Post.increment('likes', { where: { id: req.params.id } });
+    const existingInteraction = await UserPostInteraction.findOne({
+      where: {
+        user_id: req.session.user_id,
+        post_id: req.params.id,
+      },
+    });
 
-    if (!postData) {
-      res.status(404).json({ message: 'No post found with this id!' });
-      return;
+    if (existingInteraction) {
+      if (existingInteraction.interaction_type === 'like') {
+        await existingInteraction.update({ interaction_type: 'neutral' });
+        await Post.decrement('likes', { where: { id: req.params.id } });
+      } else {
+        await existingInteraction.update({ interaction_type: 'like' });
+        if (existingInteraction.interaction_type === 'dislike') {
+          await Post.increment('likes', { where: { id: req.params.id } });
+          await Post.decrement('dislikes', { where: { id: req.params.id } });
+        } else {
+          await Post.increment('likes', { where: { id: req.params.id } });
+        }
+      }
+    } else {
+      await UserPostInteraction.create({
+        user_id: req.session.user_id,
+        post_id: req.params.id,
+        interaction_type: 'like',
+      });
+      await Post.increment('likes', { where: { id: req.params.id } });
     }
 
-    res.status(200).json(postData);
+    const updatedPost = await Post.findByPk(req.params.id);
+    res.status(200).json(updatedPost);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -76,14 +99,37 @@ router.put('/like/:id', withAuth, async (req, res) => {
 // Dislike a post
 router.put('/dislike/:id', withAuth, async (req, res) => {
   try {
-    const postData = await Post.decrement('likes', { where: { id: req.params.id } });
+    const existingInteraction = await UserPostInteraction.findOne({
+      where: {
+        user_id: req.session.user_id,
+        post_id: req.params.id,
+      },
+    });
 
-    if (!postData) {
-      res.status(404).json({ message: 'No post found with this id!' });
-      return;
+    if (existingInteraction) {
+      if (existingInteraction.interaction_type === 'dislike') {
+        await existingInteraction.update({ interaction_type: 'neutral' });
+        await Post.increment('dislikes', { where: { id: req.params.id } });
+      } else {
+        await existingInteraction.update({ interaction_type: 'dislike' });
+        if (existingInteraction.interaction_type === 'like') {
+          await Post.decrement('likes', { where: { id: req.params.id } });
+          await Post.increment('dislikes', { where: { id: req.params.id } });
+        } else {
+          await Post.increment('dislikes', { where: { id: req.params.id } });
+        }
+      }
+    } else {
+      await UserPostInteraction.create({
+        user_id: req.session.user_id,
+        post_id: req.params.id,
+        interaction_type: 'dislike',
+      });
+      await Post.increment('dislikes', { where: { id: req.params.id } });
     }
 
-    res.status(200).json(postData);
+    const updatedPost = await Post.findByPk(req.params.id);
+    res.status(200).json(updatedPost);
   } catch (err) {
     res.status(500).json(err);
   }
