@@ -1,24 +1,29 @@
-// public\js\LikeandDislike.js
-
 document.querySelectorAll('.like-button').forEach(button => {
     button.addEventListener('click', function(event) {
       event.preventDefault();
       const postId = this.getAttribute('data-id');
-      fetch(`/api/posts/like/${postId}`, {
+      const likeValue = true; 
+      const dislikeValue = false;
+  
+      fetch(`/api/posts/like-dislike/${postId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          like: likeValue,
+          dislike: dislikeValue,
+        }),
       }).then(response => {
         if (response.ok) {
           return response.json();
         } else {
           alert('Error: ' + response.statusText);
         }
-      }).then(data => {
+      }).then(post => {
         console.log('Post liked');
         const likeCount = document.querySelector(`#like-count-${postId}`);
-        likeCount.textContent = data.likes - data.dislikes; 
+        likeCount.textContent = post.likes - post.dislikes;
       });
     });
   });
@@ -27,21 +32,28 @@ document.querySelectorAll('.like-button').forEach(button => {
     button.addEventListener('click', function(event) {
       event.preventDefault();
       const postId = this.getAttribute('data-id');
-      fetch(`/api/posts/dislike/${postId}`, {
+      const likeValue = false;
+      const dislikeValue = true; 
+  
+      fetch(`/api/posts/like-dislike/${postId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          like: likeValue,
+          dislike: dislikeValue,
+        }),
       }).then(response => {
         if (response.ok) {
           return response.json();
         } else {
           alert('Error: ' + response.statusText);
         }
-      }).then(data => {
+      }).then(post => {
         console.log('Post disliked');
         const likeCount = document.querySelector(`#like-count-${postId}`);
-        likeCount.textContent = data.likes - data.dislikes; 
+        likeCount.textContent = post.likes - post.dislikes;
       });
     });
   });
