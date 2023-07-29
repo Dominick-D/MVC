@@ -1,52 +1,63 @@
 [
     {
-        "comment_text": "This is a test comment.",
-        "user_id": 1,
-        "post_id": 1
+      "comment_text": "Great review!",
+      "user_id": 2,
+      "post_id": 1
     },
     {
-        "comment_text": "This is another test comment.",
-        "user_id": 2,
-        "post_id": 2
+      "comment_text": "I love unboxing videos.",
+      "user_id": 3,
+      "post_id": 2
     },
     {
-        "comment_text": "This is a test comment.",
-        "user_id": 3,
-        "post_id": 3
+      "comment_text": "Interesting comparison.",
+      "user_id": 4,
+      "post_id": 3
     },
     {
-        "comment_text": "This is another test comment.",
-        "user_id": 4,
-        "post_id": 4
+      "comment_text": "Thanks for the tips!",
+      "user_id": 5,
+      "post_id": 4
     },
     {
-        "comment_text": "This is a test comment.",
-        "user_id": 5,
-        "post_id": 5
+      "comment_text": "I didn't know about this news.",
+      "user_id": 6,
+      "post_id": 5
     },
     {
-        "comment_text": "This is another test comment.",
-        "user_id": 6,
-        "post_id": 6
+      "comment_text": "The guide was very helpful.",
+      "user_id": 7,
+      "post_id": 6
     },
     {
-        "comment_text": "This is a test comment.",
-        "user_id": 7,
-        "post_id": 7
+      "comment_text": "I learned a lot from this tutorial.",
+      "user_id": 8,
+      "post_id": 7
     },
     {
-        "comment_text": "This is another test comment.",
-        "user_id": 8,
-        "post_id": 8
+      "comment_text": "I have some thoughts on this topic.",
+      "user_id": 9,
+      "post_id": 8
     },
     {
-        "comment_text": "This is a test comment.",
-        "user_id": 9,
-        "post_id": 9
+      "comment_text": "I agree with your analysis.",
+      "user_id": 10,
+      "post_id": 9
     },
     {
-        "comment_text": "This is another test comment.",
-        "user_id": 10,
-        "post_id": 10
+      "comment_text": "I'll check out your recommendation.",
+      "user_id": 1,
+      "post_id": 10
+    },
+    {
+      "comment_text": "I'm glad you liked the review.",
+      "user_id": 1,
+      "post_id": 1
+    },
+    {
+      "comment_text": "I'm glad you enjoyed the video.",
+      "user_id": 2,
+      "post_id": 2
     }
-]
+  ]
+  

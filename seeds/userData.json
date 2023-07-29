@@ -1,43 +1,53 @@
-
 [
-  {
-      "username": "testUser1",
+    {
+      "username": "LinusTechTips",
+      "email": "linus@example.com",
       "password": "password123"
-  },
-  {
-      "username": "testUser2",
+    },
+    {
+      "username": "MarquesBrownlee",
+      "email": "marques@example.com",
       "password": "password123"
-  },
-  {
-      "username": "testUser3",
+    },
+    {
+      "username": "UnboxTherapy",
+      "email": "unbox@example.com",
       "password": "password123"
-  },
-  {
-      "username": "testUser4",
+    },
+    {
+      "username": "TechSource",
+      "email": "techsource@example.com",
       "password": "password123"
-  },
-  {
-      "username": "testUser5",
+    },
+    {
+      "username": "AustinEvans",
+      "email": "austin@example.com",
       "password": "password123"
-  },
-  {
-      "username": "testUser6",
+    },
+    {
+      "username": "JonathanMorrison",
+      "email": "jonathan@example.com",
       "password": "password123"
-  },
-  {
-      "username": "testUser7",
+    },
+    {
+      "username": "UrAvgConsumer",
+      "email": "uravg@example.com",
       "password": "password123"
-  },
-  {
-      "username": "testUser8",
+    },
+    {
+      "username": "Dave2D",
+      "email": "dave2d@example.com",
       "password": "password123"
-  },
-  {
-      "username": "testUser9",
+    },
+    {
+      "username": "MKBHD",
+      "email": "mkbhd@example.com",
       "password": "password123"
-  },
-  {
-      "username": "testUser10",
+    },
+    {
+      "username": "Mrwhosetheboss",
+      "email": "mrwhosetheboss@example.com",
       "password": "password123"
-  }
-]
+    }
+  ]
+  

@@ -31,6 +31,11 @@ Post.init(
       allowNull: false,
       defaultValue: 0,
     },
+    dislikes: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
   },
   {
     sequelize,

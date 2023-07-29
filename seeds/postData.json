@@ -1,52 +1,53 @@
 [
-  {
-      "title": "Test Post 1",
-      "content": "This is a test post.",
+    {
+      "title": "New Tech Review",
+      "content": "Just reviewed the latest tech gadget.",
       "user_id": 1
-  },
-  {
-      "title": "Test Post 2",
-      "content": "This is another test post.",
+    },
+    {
+      "title": "Unboxing Video",
+      "content": "Unboxed a new tech product today.",
       "user_id": 2
-  },
-  {
-      "title": "Test Post 3",
-      "content": "This is a test post.",
+    },
+    {
+      "title": "Tech Comparison",
+      "content": "Compared two popular tech products.",
       "user_id": 3
-  },
-  {
-      "title": "Test Post 4",
-      "content": "This is another test post.",
+    },
+    {
+      "title": "Tech Tips",
+      "content": "Shared some useful tech tips.",
       "user_id": 4
-  },
-  {
-      "title": "Test Post 5",
-      "content": "This is a test post.",
+    },
+    {
+      "title": "Tech News",
+      "content": "Discussed the latest tech news.",
       "user_id": 5
-  },
-  {
-      "title": "Test Post 6",
-      "content": "This is another test post.",
+    },
+    {
+      "title": "Tech Guide",
+      "content": "Published a new tech guide.",
       "user_id": 6
-  },
-  {
-      "title": "Test Post 7",
-      "content": "This is a test post.",
+    },
+    {
+      "title": "Tech Tutorial",
+      "content": "Created a new tech tutorial.",
       "user_id": 7
-  },
-  {
-      "title": "Test Post 8",
-      "content": "This is another test post.",
+    },
+    {
+      "title": "Tech Discussion",
+      "content": "Started a discussion on a tech topic.",
       "user_id": 8
-  },
-  {
-      "title": "Test Post 9",
-      "content": "This is a test post.",
+    },
+    {
+      "title": "Tech Analysis",
+      "content": "Analyzed a new tech trend.",
       "user_id": 9
-  },
-  {
-      "title": "Test Post 10",
-      "content": "This is another test post.",
+    },
+    {
+      "title": "Tech Recommendation",
+      "content": "Recommended a new tech product.",
       "user_id": 10
-  }
-]
+    }
+  ]
+  
