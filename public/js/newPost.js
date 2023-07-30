@@ -10,15 +10,15 @@ const newFormHandler = async (event) => {
         body: JSON.stringify({ title, content }),
         headers: {
           'Content-Type': 'application/json'
-        }
-      });
-  
-      if (response.ok) {
+        }}); 
+        if (response.ok) {
         const newPost = await response.json();
         document.location.replace(`/post/${newPost.id}`);
       } else {
         alert('Failed to create post');
       }
+    } else {
+      alert('Both title and content fields must be filled out');
     }
   };
   const newPostForm = document.querySelector('.new-post-form');

@@ -1,62 +1,39 @@
 document.querySelectorAll('.like-button').forEach(button => {
     button.addEventListener('click', function(event) {
-      event.preventDefault();
-      const postId = this.getAttribute('data-id');
-      const likeValue = true; 
-      const dislikeValue = false;
-  
-      fetch(`/api/likes/${postId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          like: likeValue,
-          dislike: dislikeValue,
-        }),
-      }).then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          alert('Error: ' + response.statusText);
-        }
-      }).then(post => {
-        console.log('Post liked');
-        const likeCount = document.querySelector(`#like-count-${postId}`);
-        if(likeCount){
-        likeCount.textContent = post.likes - post.dislikes;
-        }
-      });
+        event.preventDefault();
+        const postId = this.getAttribute('data-id');
+        sendInteraction(postId, 'like');
     });
-  });
-  
-  document.querySelectorAll('.dislike-button').forEach(button => {
+});
+
+document.querySelectorAll('.dislike-button').forEach(button => {
     button.addEventListener('click', function(event) {
-      event.preventDefault();
-      const postId = this.getAttribute('data-id');
-      const likeValue = false;
-      const dislikeValue = true; 
-  
-      fetch(`/api/posts/like-dislike/${postId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          like: likeValue,
-          dislike: dislikeValue,
-        }),
-      }).then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          alert('Error: ' + response.statusText);
-        }
-      }).then(post => {
-        console.log('Post disliked');
-        const likeCount = document.querySelector(`#like-count-${postId}`);
-        likeCount.textContent = post.likes - post.dislikes;
-      });
+        event.preventDefault();
+        const postId = this.getAttribute('data-id');
+        sendInteraction(postId, 'dislike');
     });
-  });
-  
+});
+
+async function sendInteraction(postId, action) {
+    try {
+        const response = await fetch(`/api/likes/${postId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ action }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            // update likes and dislikes on page
+            document.querySelector(`#like-count-${postId}`).textContent = data.likes;
+            document.querySelector(`#dislike-count-${postId}`).textContent = data.dislikes;
+        } else {
+            console.error(data);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}

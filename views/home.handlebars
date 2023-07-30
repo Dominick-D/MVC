@@ -19,12 +19,10 @@
                     </div>
                     {{#if ../logged_in}}
                     <footer class="card-footer">
-                        {{!-- <div class="level"> --}}
                         <a href="/post/{{this.id}}" class="card-footer-item">View Post & Comment</a>
                         <button class="card-footer-item like-button" data-id="{{this.id}}">
                             <span class="icon is-small"><i class="fa-solid fa-thumbs-up" style="color: #003ca3;"></i></span>
                         </button>
-                        {{!-- </div> --}}
                     </footer>
                     {{else}}
                     <footer class="card-footer">
