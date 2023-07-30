@@ -5,7 +5,7 @@ document.querySelectorAll('.like-button').forEach(button => {
       const likeValue = true; 
       const dislikeValue = false;
   
-      fetch(`/api/posts/like-dislike/${postId}`, {
+      fetch(`/api/likes/${postId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -23,7 +23,9 @@ document.querySelectorAll('.like-button').forEach(button => {
       }).then(post => {
         console.log('Post liked');
         const likeCount = document.querySelector(`#like-count-${postId}`);
+        if(likeCount){
         likeCount.textContent = post.likes - post.dislikes;
+        }
       });
     });
   });

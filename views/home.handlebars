@@ -4,7 +4,7 @@
     <div class="container">
         <div class="columns is-multiline">
             {{#each posts}}
-            <div class="column is-one-third">
+            <div class="column is-6">
                 <div class="card">
                     <header class="card-header">
                         <p class="card-header-title">{{this.title}}</p>
@@ -13,23 +13,28 @@
                         <div class="content">
                             {{this.content}}
                             <br>
-                            <small>Posted by {{this.user.username}} on {{#if this.createdAt}}{{format_date this.createdAt}}{{/if}}</small>
+                            <small>Posted by {{this.user.username}} on {{#if this.createdAt}}{{format_date
+                                this.createdAt}}{{/if}}</small>
                         </div>
                     </div>
                     {{#if ../logged_in}}
                     <footer class="card-footer">
+                        {{!-- <div class="level"> --}}
                         <a href="/post/{{this.id}}" class="card-footer-item">View Post & Comment</a>
-                        <a href="/post/{{this.id}}/like" class="card-footer-item">like</a>
+                        <button class="card-footer-item like-button" data-id="{{this.id}}">
+                            <span class="icon is-small"><i class="fa-solid fa-thumbs-up" style="color: #003ca3;"></i></span>
+                        </button>
+                        {{!-- </div> --}}
                     </footer>
                     {{else}}
                     <footer class="card-footer">
-                       <a href="/post/{{this.id}}" class="card-footer-item">View Post</a>
+                        <a href="/post/{{this.id}}" class="card-footer-item">View Post</a>
                     </footer>
                     {{/if}}
                 </div>
             </div>
             {{/each}}
-            
+
         </div>
     </div>
 </main>
