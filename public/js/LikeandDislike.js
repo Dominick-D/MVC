@@ -28,8 +28,7 @@ async function sendInteraction(postId, action) {
 
         if (response.ok) {
             // update likes and dislikes on page
-            document.querySelector(`#like-count-${postId}`).textContent = data.likes;
-            document.querySelector(`#dislike-count-${postId}`).textContent = data.dislikes;
+            document.querySelector(`#like-count-${postId}`).textContent = data.likes - data.dislikes;
         } else {
             console.error(data);
         }
