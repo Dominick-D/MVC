@@ -32,28 +32,40 @@
           {{#each posts}}
           <article class="media">
             <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>{{this.title}}</strong>
-                  <br>
-                  {{this.content}}
-                </p>
-              </div>
+              <form class="edit-post-form" data-id="{{this.id}}">
+                <div class="field">
+                  <label class="label" for="post-title-{{this.id}}">Title:</label>
+                  <div class="control">
+                    <input class="input" type="text" id="post-title-{{this.id}}" value="{{this.title}}">
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="label" for="post-content-{{this.id}}">Content:</label>
+                  <div class="control">
+                    <textarea class="textarea" id="post-content-{{this.id}}">{{this.content}}</textarea>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-info" type="submit">Update Post</button>
+                  </div>
+                </div>
+              </form>
             </div>
             <div class="media-right">
-              <button class="edit-post button is-info" data-id="{{this.id}}"><i class="fa-solid fa-edit"></i></button>
-              <button class="delete-post button is-danger" data-id="{{this.id}}"><i class="fa-solid fa-trash"></i></button>
+              <button class="delete-post button is-danger" data-id="{{this.id}}"><i
+                  class="fa-solid fa-trash"></i></button>
             </div>
-        </article>
-        {{/each}}
-        <div class="field">
-          <div class="control">
-            <a href="/new-post" class="button is-link is-fullwidth">Create New Post</a>
+          </article>
+          {{/each}}
+          <div class="field">
+            <div class="control">
+              <a href="/new-post" class="button is-link is-fullwidth">Create New Post</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 </main>
 
