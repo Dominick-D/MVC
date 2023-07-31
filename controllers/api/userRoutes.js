@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 const withAuth = require('../../utils/auth');
+const bcrypt = require('bcrypt');
 
 
 router.post('/', async (req, res) => {
@@ -84,13 +85,16 @@ router.put('/update-password', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id);
 
-    if (!userData.validPassword(req.body.currentPassword)) {
+    if (!userData.checkPassword(req.body.currentPassword)) {
       res.status(400).json({ message: 'Current password is incorrect' });
       return;
     }
 
+    // Hash the new password before updating it in the database
+    const hashedPassword = await bcrypt.hash(req.body.newPassword, 10);
+
     await User.update(
-      { password: req.body.newPassword },
+      { password: hashedPassword },
       { where: { id: req.session.user_id } }
     );
 
@@ -99,6 +103,7 @@ router.put('/update-password', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 
 

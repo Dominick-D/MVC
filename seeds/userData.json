@@ -48,6 +48,11 @@
       "username": "Mrwhosetheboss",
       "email": "mrwhosetheboss@example.com",
       "password": "password123"
+    },
+    {
+      "username": "dom123",
+      "email": "dom@mail.com",
+      "password": "domdomdom"
     }
   ]
   
