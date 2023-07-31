@@ -112,5 +112,21 @@ router.get('/new-post', withAuth, (req, res) => {
   res.render('new-post', {logged_in: true});
 });
 
+router.get('likes/:id', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id);
+
+    if (!postData) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
+    }
+
+    const post = postData.get({ plain: true });
+
+    res.render('likes', { post, logged_in: true });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

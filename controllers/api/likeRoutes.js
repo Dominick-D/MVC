@@ -6,7 +6,7 @@ router.put('/:id', withAuth, async (req, res) => {
     try {
         const postId = req.params.id;
         const userId = req.session.user_id;
-        const { action } = req.body; // action: 'like', 'dislike', 'neutral'
+        let action = req.body.action; // action: 'like', 'dislike', 'neutral'
 
         const existingInteraction = await UserPostInteraction.findOne({
             where: {
@@ -39,17 +39,23 @@ router.put('/:id', withAuth, async (req, res) => {
             where: { post_id: postId, interaction_type: 'like' }
         });
 
-        const dislikes = await UserPostInteraction.count({
-            where: { post_id: postId, interaction_type: 'dislike' }
-        });
+        let dislikes;
+        if (action === 'dislike') {
+            dislikes = await UserPostInteraction.count({
+                where: { post_id: postId, interaction_type: 'dislike' }
+            });
+        } else {
+            dislikes = 0; // Set dislikes to zero when action is 'neutral'
+        }
 
         post.likes = likes;
         post.dislikes = dislikes;
+        post.likeDislikeSum = likes - dislikes;
         await post.save();
 
         res.status(200).json(post);
     } catch (err) {
-      console.error(err);
+        console.error(err);
         res.status(500).json(err);
     }
 });

@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model {}
+class Post extends Model { }
 
 Post.init(
   {
@@ -35,6 +35,12 @@ Post.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,
+    },
+    likeDislikeSum: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return this.likes - this.dislikes;
+      },
     },
   },
   {

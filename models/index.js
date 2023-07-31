@@ -43,4 +43,10 @@ Post.belongsToMany(User, {
   foreignKey: 'post_id',
 });
 
+User.belongsToMany(Post, {
+  through: UserPostInteraction,
+  as: 'disliked_posts', // Rename the alias to 'disliked_posts'
+  foreignKey: 'user_id',
+});
+
 module.exports = { User, Post, Comment, UserPostInteraction };
