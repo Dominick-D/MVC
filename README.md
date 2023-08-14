@@ -28,7 +28,7 @@ npm start
 ```
 Then, navigate to http://localhost:3001 in your web browser to use the application. You can create an account, log in, write new posts, comment on existing posts, and manage your posts.
 Or you may view the deployed site [Here](https://mvc-blog-of-tech-78f757dd8a58.herokuapp.com/) and do the same on the deployed application!
-
+![Web SC](MVC-SC.png)
 ## 📜 License
 This project is licensed under the **APACHE** license.
 
